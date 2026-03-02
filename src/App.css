@@ -1,0 +1,142 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 600px;
+  text-align: center;
+  color:rgb(106, 193, 220);
+  font-style: italic;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.typing-box {
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  will-change: transform;
+}
+
+.typing-box span {
+  font-size: 24px;
+  white-space: pre;
+  color: #777;
+}
+
+.stats {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #000000;
+}
+
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.line {
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.line {
+  transition: transform 0.18s ease-out, opacity 0.18s ease-out;
+}
+
+.line-prev {
+  opacity: 0.35;
+}
+.line-active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+.line-next {
+  opacity: 0.35;
+}
+
+.typing-box {
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.typing-finished {
+  opacity: 0.35;
+  filter: blur(2px);
+}
+/*
+.stats {
+  transition: opacity 0.3s ease, opacity 0.3s ease; 
+}
+*/
+.results-visible {
+  transform: scale(1.15);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/*.restart-btn {
+  margin-top: 15px;
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+  */
+
+.controls button {
+  margin-top: 20px;
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: rgb(66, 186, 230);
+  border: none;
+  border-radius: 999px;
+}
+
+.controls button:hover {
+  background-color: rgb(66, 186, 230);
+  color: rgb(255, 255, 255);
+}
+
+.perfect-result {
+  color:  rgb(66, 186, 230);
+  font-weight: 700;
+  font-size: 1.2em;  
+}
+
+.stats {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  font-size: 14px;
+  color: #000000;
+}
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+}
+.perfect-badge {
+  align-self: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(82, 165, 220, 0.788);
+  background-color: rgba(59, 146, 178, 0.15);
+  color: rgb(66, 186, 230);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}

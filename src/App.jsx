@@ -22,7 +22,7 @@ const WORD_POOL = [
   'feel','hope','trust','smile','share','care','love','peace','grace','faith'
 ]
 
-const WORDS_PER_LINE = 8
+const WORDS_PER_LINE = 15
 const COLOR_PENDING = '#109cb1'
 const COLOR_CORRECT = '#1d1f1f'
 const COLOR_ERROR = '#c03636'

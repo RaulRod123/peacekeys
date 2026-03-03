@@ -6,7 +6,7 @@
 }
 
 .container {
-  width: 600px;
+  width: min(1100px, 95vw);
   text-align: center;
   color:rgb(106, 193, 220);
   font-style: italic;
@@ -52,6 +52,8 @@
 .line {
   line-height: 1.4;
   white-space: nowrap;
+  width: fit-content;
+  margin: 0 auto;
 }
 .line {
   transition: transform 0.18s ease-out, opacity 0.18s ease-out;

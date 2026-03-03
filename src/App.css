@@ -76,24 +76,12 @@
   opacity: 0.35;
   filter: blur(2px);
 }
-/*
-.stats {
-  transition: opacity 0.3s ease, opacity 0.3s ease; 
-}
-*/
+
 .results-visible {
   transform: scale(1.15);
   font-weight: 500;
   font-style: italic;
 }
-
-/*.restart-btn {
-  margin-top: 15px;
-  padding: 8px 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
-  */
 
 .controls button {
   margin-top: 20px;

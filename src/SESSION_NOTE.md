@@ -40,3 +40,9 @@ Date: 2026-03-02
 - Standard workflow: edit -> test -> `git add .` -> `git commit` -> `git push`.
 - After Vercel setup, pushes to `main` should auto-deploy updates.
 
+## Product Direction Note
+PeaceKeys is being built as a positive typing experience centered on encouragement, calm, and personal growth.  
+For beta, quote/source features will stay optional and neutral in presentation so users feel supported, not pressured.  
+Primary goal: test how users perceive the tone, clarity, and emotional impact of the app while I continue refining the product vision.
+
+

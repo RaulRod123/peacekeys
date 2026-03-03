@@ -3,48 +3,26 @@ import './App.css'
 import ResultsSummary from './components/ResultsSummary'
 
 
+
 //=========================
 // CONSTANTS
 // ========================//
 const WORD_POOL = [
-  'peace',
-  'kind',
-  'words',
-  'wisdom',
-  'gentle',
-  'truth',
-  'faith',
-  'make',
-  'well',
-  'for',
-  'plan',
-  'do',
-  'same',
-  'fact',
-  'begin',
-  'need',
-  'call',
-  'place',
-  'give',
-  'part',
-  'this',
-  'also',
-  'but',
-  'or',
-  'and',
-  'cool',
-  'mercy',
-  'humble',
-  'calm',
-  'hope',
-  'grace',
-  'love',
-  'joy',
-  'serene',
-  'kindness',
-  'patience',
-  'harmony',
+  'the','and','for','you','that','with','this','have','from','your',
+  'will','what','when','where','how','why','can','could','should','would',
+  'there','their','about','after','before','today','again','never','always','often',
+  'time','year','week','day','night','home','work','school','place','world',
+  'people','person','friend','family','child','group','name','word','line','part',
+  'hand','head','face','eyes','mind','heart','life','body','food','water',
+  'bread','table','room','door','light','sound','music','book','story','page',
+  'good','best','better','right','wrong','true','kind','calm','safe','warm',
+  'small','large','short','long','early','late','young','old','new','same',
+  'make','take','give','help','keep','move','walk','read','write','learn',
+  'start','begin','stop','finish','open','close','look','watch','think','know',
+  'feel','hope','trust','smile','share','care','love','peace','grace','faith'
 ]
+
+
 
 const WORDS_PER_LINE = 8
 const COLOR_PENDING = '#109cb1'

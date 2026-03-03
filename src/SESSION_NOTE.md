@@ -45,4 +45,19 @@ PeaceKeys is being built as a positive typing experience centered on encourageme
 For beta, quote/source features will stay optional and neutral in presentation so users feel supported, not pressured.  
 Primary goal: test how users perceive the tone, clarity, and emotional impact of the app while I continue refining the product vision.
 
+## Long-Term Product Note (Do Not Lose)
+PeaceKeys is not just a typing test. The long-term goal is an adaptive learning system that improves over time using real user typing data (including my own sessions).
+
+Core idea:
+- collect useful performance signals (accuracy, speed, friction words, retry patterns)
+- identify what helps users stay calm, encouraged, and consistent
+- adjust content/difficulty progressively based on behavior, not static presets
+
+Why this matters:
+Most typing tools are fixed and one-size-fits-all. PeaceKeys should evolve with the user and become more personalized as more data is collected.
+
+Status:
+This is a future-phase direction, not a current beta requirement, but all major feature decisions should keep this adaptive vision in mind.
+
+
 

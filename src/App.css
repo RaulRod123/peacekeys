@@ -34,7 +34,7 @@
   white-space: pre;
   color: #777;
 }
-
+/*
 .stats {
   margin-top: 24px;
   display: flex;
@@ -42,7 +42,7 @@
   font-size: 14px;
   color: #000000;
 }
-
+*/
 .hidden-input {
   position: absolute;
   opacity: 0;

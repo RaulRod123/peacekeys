@@ -34,15 +34,7 @@
   white-space: pre;
   color: #777;
 }
-/*
-.stats {
-  margin-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #000000;
-}
-*/
+
 .hidden-input {
   position: absolute;
   opacity: 0;
@@ -129,4 +121,9 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.03em;
+}
+
+.controls button.is-active {
+  background-color: rgb(66, 186, 230);
+  color: rgb(255, 255, 255);
 }

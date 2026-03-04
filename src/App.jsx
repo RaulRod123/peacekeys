@@ -7,6 +7,24 @@ import ResultsSummary from './components/ResultsSummary'
 //=========================
 // CONSTANTS
 // ========================//
+const QUOTE_POOL = [
+  'So other people hurt me? That is their problem. Their character and actions are not mine. What is done to me is ordained by nature, what I do by my own',
+  'It is crazy to want what is impossible. And impossible for the wicked not to do so.',
+  'To labor cheerfully and so endure, endure the wind that blows from heaven',
+  'To love only what happens, what was destined. No greater harmony.',
+  'Not a dancer but a wrestler: waiting, poised and dug in, for sudden assault.',
+  'Never let oyalty and kindess leave you! Tie them around your neck as a reminder. Write them deep within your heart.',
+  'Seek his will in all you do, and he will show you which path to take.',
+  'Fear of the Lord is the foundation of true knowledge, but fools despise wisdom and discipline.',
+  'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',
+  'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.',
+  'I can do all this through him who gives me strength.',
+  'The wise inherit honor, but fools are put to shame.',
+  'Let your wife be a fountain of blessing for you. Rejoice in the wife of your youth.',
+  'Such is the fate of all who are greedy for money; it robs them of life.',  
+  'Tune your ears to wisdom, and concentrate on understanding. Cry out for insight, and ask for understanding. Search for them as you would for silver; seek them like hidden treasures.',
+]
+
 const WORD_POOL = [
   'the','and','for','you','that','with','this','have','from','your',
   'will','what','when','where','how','why','can','could','should','would',
@@ -21,6 +39,8 @@ const WORD_POOL = [
   'start','begin','stop','finish','open','close','look','watch','think','know',
   'feel','hope','trust','smile','share','care','love','peace','grace','faith'
 ]
+
+
 
 const WORDS_PER_LINE = 15
 const COLOR_PENDING = '#109cb1'
@@ -45,6 +65,9 @@ function generateText(length = 200) {
     words.push(next)
   }
   return words.join(' ')
+}
+function generateQuoteText() {
+  return QUOTE_POOL[Math.floor(Math.random() * QUOTE_POOL.length)]
 }
 
 function isTypingKey(key) {
@@ -142,13 +165,16 @@ function App() {
   const [isRunning, setIsRunning] = useState(false)
   const [duration, setDuration] = useState(60)
   const [isFinished, setIsFinished] = useState(false)
+  const [mode, setMode] = useState('words')
   const [renderWordIndex, setRenderWordIndex] = useState(WORDS_PER_LINE)
-  const [text, setText] = useState(() => generateText(200))
+  const [text, setText] = useState(() => generateText())
   const [cursor, setCursor] = useState(0)
   const [typed, setTyped] = useState([])
   const [attempts, setAttempts] = useState(0)
   const [errors, setErrors] = useState(0)
   const inputRef = useRef(null)
+   // 'words' or 'quotes'
+  
 
 // ===========================
 // DERIVED VALUES (useMemo)
@@ -248,22 +274,34 @@ function App() {
       }
 
       setTyped((prev) => [...prev, e.key])
-      setCursor((c) => c + 1)
+      setCursor((c) => {
+        const next = c +1
+        if (next >= text.length) {
+          setIsRunning(false)
+          setIsFinished(true)
+        }
+        return next
+      })
     },
     [isFinished, isRunning, charsBeforeLine0, text, cursor]
   )
 
-  const restartTest = useCallback(() => {
+  const restartTest = useCallback((nextMode = mode) => {
     setTime(0)
     setIsRunning(false)
     setIsFinished(false)
     setCursor(0)
     setTyped([])
     setRenderWordIndex(WORDS_PER_LINE)
-    setText(generateText())
+    setText(nextMode === 'quotes' ? generateQuoteText() : generateText())
     setAttempts(0)
     setErrors(0)
-  }, [])
+  }, [mode])
+
+  const handleModeChange = useCallback((nextMode) => {
+    setMode(nextMode)
+    restartTest(nextMode)
+  }, [restartTest])
 // ===========================
 // RENDER
 // ===========================
@@ -296,12 +334,26 @@ function App() {
         <div className="controls">
           {!isRunning && (
             <>
+              <button 
+                className={mode === 'words' ? 'is-active' : ''}
+                onClick={() => handleModeChange('words')}
+              >
+                Word Mode
+              </button>
+                         
+                
+              <button 
+                className={mode === 'quotes' ? 'is-active' : ''}
+                 onClick={() => handleModeChange('quotes')}
+              >
+                Quote Mode
+              </button>
               <button onClick={() => restartTest() || setDuration(30)}>30s</button>
               <button onClick={() => restartTest() || setDuration(60)}>60s</button>
             </>
           )}
 
-          <button onClick={restartTest}>Restart</button>
+          <button onClick={() => restartTest()}>Restart</button>
         </div>
       </div>
     </div>

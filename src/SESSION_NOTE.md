@@ -34,3 +34,5 @@ Date: 2026-03-03
 - Vocabulary/layout updates pushed to `main`.
 - Vercel deployment completed and live URL confirmed.
 - README updated with live demo link.
+
+## AGAIN YOU DO NOT MAKE ANY CHANGES WITHOUT ME DOING THEM. NO MORE PROMPTING YOUR CHANGES. 

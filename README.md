@@ -1,20 +1,27 @@
 ## Live Demo
 https://peacekeys-raul.vercel.app/
 
+## The Mission
+PeaceKeys is built on the belief that our digital spaces should be filled with words that build you up rather than tear you down. My goal is to use technology as a vessel for kindness, providing users with a practice space that reinforces peace and encouragement through every keystroke. By focusing on "Psychological Wellness" typing, I hope to help users develop technical skills while being surrounded by words that promote a positive and grounded mindset.
 
-# React + Vite
+## My Story: From Intimidation to Creation
+I have always felt that tech was something that was difficult to understand and felt intimidated by it. This project is a personal challenge. The feeling of being "technically deficient," made me realize that others learning to type were having the same issue. I wanted to see if I could bridge the gap between having zero coding experience and building a functional tool that helps people. By using AI as a collaborative partner, I was able to focus on the logic I cared about: real-time accuracy, user flow, and a minimalist design that doesn't feel overwhelming. This journey has taught me that with patience and a clean working environment you can make things that appear difficult look easy. That is a strong focus behind creating this website, making it look easy and not intimidating for newer users. Especially the older generations and people looking to shift their careers or expand their knowledge by mastering the most basic, typing. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The Tech Behind the Transformation
+Going from zero programming experience to a live application required a focused learning path. These are the tools I mastered to bring PeaceKeys to life:
+Frontend: React.js & Vite (for building a fast, modern user interface)
 
-Currently, two official plugins are available:
+Styling: CSS3 (focused on creating a minimalist, "Zen" aesthetic)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Deployment: Vercel (managing the pipeline from code to a live URL)
 
-## React Compiler
+Version Control: Git & GitHub (maintaining a professional development workflow)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## My Approach: AI-Augmented Development
+I chose to embrace Generative AI as my primary learning tool and "Senior Partner." Rather than just generating code, I used AI to:
 
-## Expanding the ESLint configuration
+Deconstruct Concepts: I used AI to explain complex logic like "React Hooks" and "State Management" in terms I could apply.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Collaborative Troubleshooting: I worked with AI to debug my logic, helping me understand why a solution worked, not just that it worked.
+
+User Experience: I’m refining the app to be more "forgiving" ensuring it handles corrections and backspacing smoothly so the user stays encouraged rather than frustrated.

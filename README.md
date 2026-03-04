@@ -9,6 +9,7 @@ I have always felt that tech was something that was difficult to understand and 
 
 ## The Tech Behind the Transformation
 Going from zero programming experience to a live application required a focused learning path. These are the tools I mastered to bring PeaceKeys to life:
+
 Frontend: React.js & Vite (for building a fast, modern user interface)
 
 Styling: CSS3 (focused on creating a minimalist, "Zen" aesthetic)

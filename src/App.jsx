@@ -8,7 +8,7 @@ import ResultsSummary from './components/ResultsSummary'
 // CONSTANTS
 // ========================//
 const QUOTE_POOL = [
-  'To direct your thughts to what is said. To focus the mind on what happens and what makes it happen.',
+  'To direct your thoughts to what is said. To focus the mind on what happens and what makes it happen.',
   'So other people hurt me? That is their problem. Their character and actions are not mine. What is done to me is ordained by nature, what I do by my own.',
   'It is crazy to want what is impossible. And impossible for the wicked not to do so.',
   'To labor cheerfully and so endure, endure the wind that blows from heaven',

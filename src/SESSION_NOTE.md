@@ -38,4 +38,30 @@ git remote -v
 git log --oneline --decorate -5
 git push origin main
 
+## Progress Update (2026-03-06)
+
+### Completed
+1. Finalized scoring model simplification in `src/App.jsx`.
+2. Removed `attempts` / `errors` state and related update/reset logic.
+3. Accuracy now calculates from current typed result only: `correctChars / typed.length`.
+4. WPM now calculates from correct characters only: `(correctChars / 5) / minutes`.
+5. Preserved existing mode switching, restart behavior, and quote completion behavior.
+
+### Decision
+- Beta metrics for now are only:
+  - Accuracy
+  - WPM
+- No raw input counters or error display in this phase.
+
+### Next Steps (Beta Path)
+1. Build History MVP (localStorage first):
+   - Save one record on test completion: date, mode, duration, wpm, accuracy.
+   - Add simple history UI (recent runs + personal best + 7-day average).
+2. Keep UX stable while adding history:
+   - Ensure record saves once per finished run.
+   - Ensure restart/mode change does not create duplicate entries.
+3. After History MVP, evaluate progression layer:
+   - streaks, “beat last run”, mode-specific bests.
+
+
 ## you are only for guidance!! I will make all the commands. No more prompting to run commands

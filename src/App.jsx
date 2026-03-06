@@ -169,18 +169,14 @@ function App() {
   const [renderWordIndex, setRenderWordIndex] = useState(WORDS_PER_LINE)
   const [text, setText] = useState(() => generateText())
   const [cursor, setCursor] = useState(0)
-  const [typed, setTyped] = useState([])
-  const [attempts, setAttempts] = useState(0)
-  const [errors, setErrors] = useState(0)
-  const inputRef = useRef(null)
-   // 'words' or 'quotes'
+  const [typed, setTyped] = useState([])  
+  const inputRef = useRef(null) 
   
 
 // ===========================
 // DERIVED VALUES (useMemo)
 // ===========================  
-  const { accuracy, wpm } = useMemo(() => {
-    const totalTypedLocal = typed.length
+  const { accuracy, wpm } = useMemo(() => {    
     const correctChars = typed.reduce(
       (count, char, i) => count + (char === text[i] ? 1 : 0),
       0
@@ -188,17 +184,17 @@ function App() {
     
 
     const accuracyLocal =
-      attempts > 0 ? Math.round((correctChars / attempts) * 100) : 100
+      typed.length > 0 ? Math.round((correctChars / typed.length) * 100) : 100
 
     const minutes = time / 60
     const wpmLocal =
-      minutes > 0 ? Math.round((totalTypedLocal / 5) / minutes) : 0
+      minutes > 0 ? Math.round((correctChars / 5) / minutes) : 0
 
     return {      
       accuracy: accuracyLocal,
       wpm: wpmLocal,
     }
-  }, [typed, text, attempts, time])
+  }, [typed, text, time])
 
   const { line1EndIndex, charsBeforeLine0, lineToRender } = useMemo(
     () => deriveVisibleLines(text, renderWordIndex),
@@ -264,15 +260,9 @@ function App() {
 
         return
       }
+      e.preventDefault()     
 
-      e.preventDefault()
-      const expectedChar = text[cursor]
-      setAttempts((a) => a + 1)
-
-      if (e.key !== expectedChar) {
-        setErrors((prev) => prev + 1)
-      }
-
+      
       setTyped((prev) => [...prev, e.key])
       setCursor((c) => {
         const next = c +1
@@ -293,9 +283,7 @@ function App() {
     setCursor(0)
     setTyped([])
     setRenderWordIndex(WORDS_PER_LINE)
-    setText(nextMode === 'quotes' ? generateQuoteText() : generateText())
-    setAttempts(0)
-    setErrors(0)
+    setText(nextMode === 'quotes' ? generateQuoteText() : generateText())    
   }, [mode])
 
   const handleModeChange = useCallback((nextMode) => {

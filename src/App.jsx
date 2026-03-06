@@ -8,12 +8,12 @@ import ResultsSummary from './components/ResultsSummary'
 // CONSTANTS
 // ========================//
 const QUOTE_POOL = [
-  'So other people hurt me? That is their problem. Their character and actions are not mine. What is done to me is ordained by nature, what I do by my own',
+  'So other people hurt me? That is their problem. Their character and actions are not mine. What is done to me is ordained by nature, what I do by my own.',
   'It is crazy to want what is impossible. And impossible for the wicked not to do so.',
   'To labor cheerfully and so endure, endure the wind that blows from heaven',
   'To love only what happens, what was destined. No greater harmony.',
   'Not a dancer but a wrestler: waiting, poised and dug in, for sudden assault.',
-  'Never let oyalty and kindess leave you! Tie them around your neck as a reminder. Write them deep within your heart.',
+  'Never let loyalty and kindess leave you! Tie them around your neck as a reminder. Write them deep within your heart.',
   'Seek his will in all you do, and he will show you which path to take.',
   'Fear of the Lord is the foundation of true knowledge, but fools despise wisdom and discipline.',
   'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',

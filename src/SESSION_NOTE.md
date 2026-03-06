@@ -44,6 +44,7 @@ git push origin main
 1. Finalized scoring model simplification in `src/App.jsx`.
 2. Removed `attempts` / `errors` state and related update/reset logic.
 3. Accuracy now calculates from current typed result only: `correctChars / typed.length`.
+Step 3 was changed. The accuracy is now totalAttempts no longer length
 4. WPM now calculates from correct characters only: `(correctChars / 5) / minutes`.
 5. Preserved existing mode switching, restart behavior, and quote completion behavior.
 

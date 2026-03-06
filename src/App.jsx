@@ -171,7 +171,8 @@ function App() {
   const [renderWordIndex, setRenderWordIndex] = useState(WORDS_PER_LINE)
   const [text, setText] = useState(() => generateText())
   const [cursor, setCursor] = useState(0)
-  const [typed, setTyped] = useState([])  
+  const [typed, setTyped] = useState([])
+  const [mistakes, setMistakes] = useState(0)   
   const inputRef = useRef(null) 
   
 
@@ -183,10 +184,9 @@ function App() {
       (count, char, i) => count + (char === text[i] ? 1 : 0),
       0
     )
-    
-
+    const totalAttempts = correctChars + mistakes    
     const accuracyLocal =
-      typed.length > 0 ? Math.round((correctChars / typed.length) * 100) : 100
+      totalAttempts > 0 ? Math.round((correctChars / totalAttempts) * 100) : 100
 
     const minutes = time / 60
     const wpmLocal =
@@ -196,7 +196,7 @@ function App() {
       accuracy: accuracyLocal,
       wpm: wpmLocal,
     }
-  }, [typed, text, time])
+  }, [typed, text, time, mistakes])
 
   const { line1EndIndex, charsBeforeLine0, lineToRender } = useMemo(
     () => deriveVisibleLines(text, renderWordIndex),
@@ -262,7 +262,11 @@ function App() {
 
         return
       }
-      e.preventDefault()     
+      e.preventDefault()
+      
+      if (e.key !== text[cursor]) {
+        setMistakes((m) => m + 1)
+      }
 
       
       setTyped((prev) => [...prev, e.key])
@@ -284,6 +288,7 @@ function App() {
     setIsFinished(false)
     setCursor(0)
     setTyped([])
+    setMistakes(0)
     setRenderWordIndex(WORDS_PER_LINE)
     setText(nextMode === 'quotes' ? generateQuoteText() : generateText())    
   }, [mode])

@@ -4,6 +4,8 @@ https://peacekeys-raul.vercel.app/
 ## The Mission
 PeaceKeys is built on the belief that our digital spaces should be filled with words that build you up rather than tear you down. My goal is to use technology as a vessel for kindness, providing users with a practice space that reinforces peace and encouragement through every keystroke. By focusing on "Psychological Wellness" typing, I hope to help users develop technical skills while being surrounded by words that promote a positive and grounded mindset.
 
+![PeaceKeys GIF](https://github.com/user-attachments/assets/b4891215-a0e8-4882-b6aa-e895019c88d0)
+
 ## Work in Progress
 PeaceKeys is actively evolving. While we currently feature a selection of Bible quotes, our library is expanding to include a broader range of diverse vocabulary, secular affirmations, and philosophical quotes to support a grounded mindset for all users.
 

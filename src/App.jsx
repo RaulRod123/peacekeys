@@ -172,9 +172,17 @@ function App() {
   const [text, setText] = useState(() => generateText())
   const [cursor, setCursor] = useState(0)
   const [typed, setTyped] = useState([])
-  const [mistakes, setMistakes] = useState(0)   
-  const inputRef = useRef(null) 
+  const [mistakes, setMistakes] = useState(0)
+  const [history, setHistory] = useState(() => {
+    const saved = localStorage.getItem('peacekeys-history')
+    return saved ? JSON.parse(saved) : []  
+  })  
   
+  const [resultSaved, setResultSaved] = useState(false)
+  
+  const inputRef = useRef(null)
+  
+   
 
 // ===========================
 // DERIVED VALUES (useMemo)
@@ -202,6 +210,32 @@ function App() {
     () => deriveVisibleLines(text, renderWordIndex),
     [text, renderWordIndex]
   )
+
+  const recentRuns = history.slice(0,5)
+
+  const bestRun = history.reduce((best, run) => {
+    if (!best || run.wpm > best.wpm) return run
+    return best
+  }, null)
+
+  const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
+
+  const sevenDayRuns = history.filter((run) => {
+    return new Date(run.date).getTime() >= sevenDaysAgo
+  })
+  
+  const sevenDayAverage =
+    sevenDayRuns.length > 0
+      ? {
+          wpm: Math.round(
+            sevenDayRuns.reduce((sum, run) => sum + run.wpm, 0) / sevenDayRuns.length
+          ),
+          accuracy: Math.round (
+            sevenDayRuns.reduce((sum, run) => sum + run.accuracy, 0) / sevenDayRuns.length
+          ),
+          
+      }
+    : null 
 // ===========================
 // EFFECTS
 // ===========================
@@ -239,6 +273,27 @@ function App() {
       setIsFinished(true)
     }
   }, [accuracy, wpm, isRunning])
+
+  useEffect(() => {
+    if (!isFinished || resultSaved) return
+
+    const newRecord ={
+      id: crypto.randomUUID(),
+      date: new Date().toISOString(),
+      mode,
+      duration,
+      wpm,
+      accuracy,      
+    }
+
+    setHistory((prev) => {
+      const updated =[newRecord, ...prev]
+      localStorage.setItem('peacekeys-history', JSON.stringify(updated))
+      return updated
+    })
+
+    setResultSaved(true)
+  }, [isFinished, resultSaved, mode, duration, wpm, accuracy])
 
   // ===========================
   // HANDLERS / ACTIONS
@@ -284,6 +339,7 @@ function App() {
 
   const restartTest = useCallback((nextMode = mode) => {
     setTime(0)
+    setResultSaved(false)
     setIsRunning(false)
     setIsFinished(false)
     setCursor(0)
@@ -325,6 +381,27 @@ function App() {
           wpm={wpm}
           accuracy={accuracy}
         />
+
+        <section className="history-panel">
+          <h2>History</h2>
+
+          <p>
+            Best WPM: {bestRun ? bestRun.wpm : '--'}
+          </p>
+
+          <p>
+            7-Day avg: {sevenDayAverage ? `${sevenDayAverage.wpm} WPM / ${sevenDayAverage.accuracy}%` : '--'}
+          </p>
+
+          <ul>
+            {recentRuns.map((run) => (
+              <li key={run.id}>
+                {run.mode} | {run.durations}s | {run.wpm} WPM | {run.accuracy}%` |{' '}
+                {new Date(run.date).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div className="controls">
           {!isRunning && (

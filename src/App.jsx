@@ -16,7 +16,7 @@ const QUOTE_POOL = [
   'Not a dancer but a wrestler: waiting, poised and dug in, for sudden assault.',
   'Never let loyalty and kindess leave you! Tie them around your neck as a reminder. Write them deep within your heart.',
   'Seek his will in all you do, and he will show you which path to take.',
-  'Awaken;return to yourself. Now, no longer asleep, knowing they were only dreams, clear-headed again, treat everything around you as a dream.',
+  'Awaken; return to yourself. Now, no longer asleep, knowing they were only dreams, clear-headed again, treat everything around you as a dream.',
   'Fear of the Lord is the foundation of true knowledge, but fools despise wisdom and discipline.',
   'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',
   'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.',

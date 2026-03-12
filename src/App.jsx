@@ -211,7 +211,7 @@ function App() {
     [text, renderWordIndex]
   )
 
-  const recentRuns = history.slice(0,5)
+  const recentRuns = history.slice(0, 5)
 
   const bestRun = history.reduce((best, run) => {
     if (!best || run.wpm > best.wpm) return run
@@ -277,17 +277,17 @@ function App() {
   useEffect(() => {
     if (!isFinished || resultSaved) return
 
-    const newRecord ={
+    const newRecord = {
       id: crypto.randomUUID(),
       date: new Date().toISOString(),
       mode,
       duration,
       wpm,
-      accuracy,      
+      accuracy,
     }
 
     setHistory((prev) => {
-      const updated =[newRecord, ...prev]
+      const updated = [newRecord, ...prev]
       localStorage.setItem('peacekeys-history', JSON.stringify(updated))
       return updated
     })
@@ -367,42 +367,74 @@ function App() {
           className="hidden-input"
         />
 
+      
         <TypingLines
           lineToRender={lineToRender}
           cursor={cursor}
           typed={typed}
           isFinished={isFinished}
-        />
+        />    
+    
+        {isRunning && (
+          <div className="test-timer">
+            Time: {duration -time}s
+          </div>
+        )}
+      
+        <section className={`history-panel ${isRunning ? 'history-hidden' : ''}`}>
+          <h2>Stats</h2>
 
-        <ResultsSummary
-          isFinished={isFinished}
-          isRunning={isRunning}
-          time={time}
-          wpm={wpm}
-          accuracy={accuracy}
-        />
+          <div className="top-stats-row">
+            <div className="current-results-card">
+              <ResultsSummary
+                isFinished={isFinished}
+                isRunning={isRunning}
+                time={time}
+                wpm={wpm}
+                accuracy={accuracy}
+                />
+            </div>
+          
 
-        <section className="history-panel">
-          <h2>History</h2>
+            <div className="history-stats">
+             <div className="history-stat-card">
+               <span className="history-stat-label">Best WPM</span>
+               <strong className="history-stat-value">
+                  {bestRun ? bestRun.wpm : '--'}                
+                </strong>
+              </div>
 
-          <p>
-            Best WPM: {bestRun ? bestRun.wpm : '--'}
-          </p>
+             <div className="history-stat-card">
+               <span className="history-stat-label">7-Day Avg</span>
+                <strong className="history-stat-value">
+                  {sevenDayAverage
+                   ? `${sevenDayAverage.wpm} WPM / ${sevenDayAverage.accuracy}%`
+                    : '--'}
+                </strong>
+              </div>
+            </div>
+          </div>
+         
 
-          <p>
-            7-Day avg: {sevenDayAverage ? `${sevenDayAverage.wpm} WPM / ${sevenDayAverage.accuracy}%` : '--'}
-          </p>
-
-          <ul>
-            {recentRuns.map((run) => (
-              <li key={run.id}>
-                {run.mode} | {run.durations}s | {run.wpm} WPM | {run.accuracy}%` |{' '}
-                {new Date(run.date).toLocaleDateString()}
-              </li>
-            ))}
-          </ul>
+          { recentRuns.length === 0 ? (
+              <p className="history-empty">No runs saved yet.</p>
+          ) : (
+            <ul className="history-list">
+              {recentRuns.map((run) => (
+                <li key={run.id} className="history-item">
+                  <span className="history-mode">
+                    {run.mode === 'quotes' ? 'Quote' : 'Word'}
+                  </span>
+                  <span>{run.duration}s</span>
+                  <span>{run.wpm} WPM</span>
+                  <span>{run.accuracy}%</span>
+                  <span>{new Date(run.date).toLocaleDateString()}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
-
+      
         <div className="controls">
           {!isRunning && (
             <>

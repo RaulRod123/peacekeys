@@ -1,85 +1,51 @@
-# PeaceKeys Session Note (Updated)
-
-Date: 2026-03-10
-
 ## Working Agreement
+- CRITICAL: Codex is guidance-only by default for this project.
+- CRITICAL: Codex must not edit files, apply patches, run project-changing commands, or make direct code changes unless Raul explicitly says to do so in that chat.
+- CRITICAL: If there is any ambiguity, assume guidance-only and do not change code.
 - Raul makes all final code decisions and applies all project changes.
-- Codex is guidance-only unless Raul explicitly asks for direct edits.
 - Raul enters all terminal/git commands.
 - No prompting Raul to run commands unless Raul explicitly asks for command help.
 
-## Current State
-- Repo (source of truth): `https://github.com/RaulRod123/peacekeys`
-- Live app: `https://peacekeys-raul.vercel.app/`
-- Deployment: Vercel should be connected to GitHub repo `RaulRod123/peacekeys` on branch `main`.
-- Project status: public beta/work-in-progress and shareable.
-
-## What Was Already Completed Before This Session
-1. Confirmed performance/responsiveness felt good from shared-user feedback.
-2. Added Quote Mode MVP in `src/App.jsx`.
-3. Added mode toggle buttons: `Word Mode` and `Quote Mode`.
-4. Fixed mode switching so each button loads the correct pool immediately.
-5. Added active mode highlight styling in `src/App.css`.
-6. Fixed restart behavior so `Restart` keeps current mode (does not force Word Mode).
-7. Added end-of-quote behavior so test finishes when quote text is completed.
-8. Resolved git push/rebase flow and verified clean/synced repo state.
-9. Resolved deployment confusion by standardizing on repo `RaulRod123/peacekeys`.
-10. Finalized scoring model simplification in `src/App.jsx`.
-11. Removed old raw-attempt/error-display approach from beta metrics.
-12. Accuracy now uses total attempts logic with `correctChars / totalAttempts`.
-13. WPM uses correct characters only: `(correctChars / 5) / minutes`.
-
 ## What We Completed This Session
-1. Began History MVP in `src/App.jsx`.
-2. Added `history` state loaded from `localStorage` using key `peacekeys-history`.
-3. Added `resultSaved` guard state to prevent duplicate history saves.
-4. Added a completion `useEffect` that saves one record per finished run.
-5. Record structure now includes:
-   - `id`
-   - `date`
-   - `mode`
-   - `duration`
-   - `wpm`
-   - `accuracy`
-6. Updated `restartTest()` to reset `resultSaved` for the next run.
-7. Verified saved history was being written correctly by checking browser console output.
-8. Added derived history values in `src/App.jsx`:
-   - `recentRuns`
-   - `bestRun`
-   - `sevenDayRuns`
-   - `sevenDayAverage`
-9. Added initial History UI block below `ResultsSummary`.
-10. Fixed multiple syntax/runtime mistakes during implementation:
-   - malformed `newRecord`
-   - bad `MediaRecorder` reference
-   - typo in `true`
-   - `Date.now()` casing
-   - `Math.round()` casing
-   - JSX template-string formatting issues
-   - `duration` field typo in history list rendering
+1. Continued polishing the History/Stats area in `src/App.jsx` and `src/App.css`.
+2. Renamed the visible History section heading to `Stats`.
+3. Kept local history behavior in place using `localStorage`; saved runs still persist across refreshes for each user in their own browser.
+4. Added an empty-state message path for no saved runs: `No runs saved yet.`
+5. Moved `ResultsSummary` into the stats panel so results and long-term stats can live in one surface.
+6. Removed the timer from `src/components/ResultsSummary.jsx` so the results card focuses on WPM and Accuracy.
+7. Added a separate timer above the stats panel in `src/App.jsx` that appears during the test.
+8. Restored the blur-based post-test behavior for the typing box instead of removing the typing area entirely.
+9. Brought back hidden-during-test behavior for the stats panel using the `history-hidden` class so the layout can reserve space while the test is active.
+10. Widened the stats panel in `src/App.css` to make room for both current results and derived stats.
+11. Added layout hooks/classes for the combined top row:
+   - `top-stats-row`
+   - `current-results-card`
+12. Softened the old `results-visible` effect so results stay inside the box instead of visually jumping out.
+13. Confirmed current focus is desktop-first polish, not mobile-first refinement.
 
 ## Current App Status
 - Typing test still runs normally.
 - Test completion still works.
 - History records are saving to `localStorage`.
-- History data is rendering on screen.
-- History UI is functional but visually unstyled/plain.
-- Current work is in a good stopping point before CSS cleanup and polish.
+- Stats panel now acts as a combined stats/results surface.
+- Timer is intended to show during the test above the stats area.
+- Typing box remains on screen and uses the blurred finished state.
+- Layout polish is in progress; current work is focused on reducing movement and improving clarity.
 
-## Active Workflow (Keep)
-1. Develop locally in VS Code.
-2. Test locally (`npm run dev`).
-3. Commit and push from `main`.
-4. Verify update on live URL after Vercel deploy.
+## Open Polish Items For Next Session
+1. Refine `.test-timer` spacing and centering so it does not push controls down during the test.
+2. Finalize styling for:
+   - `.top-stats-row`
+   - `.current-results-card`
+   - `.stats`
+   - `.stats-row`
+3. Decide whether recent runs should show `3` or `5` items.
+4. Confirm the stats panel hides during active typing without causing noticeable layout jump.
+5. Do a visual cleanup pass so the Stats area matches the rest of the app.
 
-## Pre-Push Safety Check (Use Every Time)
-```powershell
-git fetch origin
-git status -sb
-git remote -v
-git log --oneline --decorate -5
-git push origin main
-
-
-
-## you are only for guidance!! I will make all the commands. No more prompting to run commands
+## Reminder For Future Chats
+- Codex is only for guidance.
+- Codex must make zero file changes unless Raul explicitly requests direct edits in that chat.
+- Raul makes the changes, runs the commands, and decides what gets committed.
+- Do not assume permission to edit just because a file is open or a task is described.
+- No prompting Raul to run commands unless he explicitly asks for command help.

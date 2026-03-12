@@ -2,8 +2,7 @@ import { memo } from 'react'
 
 const ResultsSummary = memo(function ResultsSummary({
   isFinished,
-  isRunning,
-  time,
+  isRunning,  
   wpm,
   accuracy,
 }) {
@@ -11,8 +10,7 @@ const ResultsSummary = memo(function ResultsSummary({
 
   return (
     <div className={`stats ${isFinished ? 'results-visible' : ''}`}>
-        <div className="stats-row">
-          <span>Time: {time}s</span>
+        <div className="stats-row">         
 
           {(!isRunning || isFinished) && (
             <>

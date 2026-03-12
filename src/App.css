@@ -2,7 +2,8 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top:80px;
 }
 
 .container {
@@ -72,9 +73,7 @@
 }
 
 .results-visible {
-  transform: scale(1.15);
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 500;  
 }
 
 .controls button {
@@ -110,6 +109,10 @@
 .stats-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
 }
 .perfect-badge {
   align-self: center;
@@ -126,4 +129,122 @@
 .controls button.is-active {
   background-color: rgb(66, 186, 230);
   color: rgb(255, 255, 255);
+}
+
+.history-panel {
+  margin: 24px auto 0;
+  padding: 14px 16px;
+  max-width: 820px;
+  width: 100%;
+  border: 1px solid rgba(66, 186, 230, 0.2);
+  border-radius: 18px;
+  /*
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(227, 247, 255, 0.88));
+  box-shadow: 0 18px 40px rgba(16, 156, 177, 0.08);
+  */
+  text-align: left;  
+  color: #12343c;
+
+}
+
+.history-panel h2 {
+  margin: 0 0 10px;
+  color: #109cb1;
+}
+
+
+.history-panel p {
+  margin: 6px 0;
+  font-style: normal;
+}
+
+.history-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(4, auto);
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background-color: rgba(16, 156, 177, 0.08);
+  font-style: normal;
+  color: #1d1f1f;
+}
+
+.history-mode {
+  font-weight: 700;
+  color: #109cb1;
+}
+
+@media (max-width: 720px) {
+  .history-item {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .history-panel {
+    padding: 18px;
+  }
+}
+
+.history-empty {
+  margin: 16px 0 0;
+  font-style: normal;
+  color: #5f7c84;
+}
+
+.history-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.history-stat-card {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background-color: rgba(16, 155, 177, 0.143);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-stat-label {
+  font-size: 12px;
+  color: #5f7c84;
+  font-style: normal;
+}
+
+.history-stat-value {
+  font-size: 16px;
+  color: #12343c;
+  font-style: normal;
+}
+
+@media (max-width: 720px) {
+  .history-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.history-hidden {
+  visibility: hidden;
+}
+
+.test-timer {
+  margin: 8px auto auto 4px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.2;
+  font-style: normal;
+  font-weight: 600;
+  color: #000000;
 }

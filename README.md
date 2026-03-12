@@ -1,7 +1,7 @@
 ## Live Demo
 https://peacekeys-raul.vercel.app/
 
-![PeaceKeys GIF](https://github.com/user-attachments/assets/b4891215-a0e8-4882-b6aa-e895019c88d0)
+https://github.com/user-attachments/assets/c146e4c4-057f-4c08-a3eb-77df123a4adc
 
 ## The Mission
 PeaceKeys is built on the belief that our digital spaces should be filled with words that build you up rather than tear you down. My goal is to use technology as a vessel for kindness, providing users with a practice space that reinforces peace and encouragement through every keystroke. By focusing on "Psychological Wellness" typing, I hope to help users develop technical skills while being surrounded by words that promote a positive and grounded mindset.

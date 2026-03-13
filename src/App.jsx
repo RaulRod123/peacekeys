@@ -452,8 +452,24 @@ function App() {
               >
                 Quote Mode
               </button>
-              <button onClick={() => restartTest() || setDuration(30)}>30s</button>
-              <button onClick={() => restartTest() || setDuration(60)}>60s</button>
+
+              <button 
+                className={duration === 30 ? 'is-active' : ''}
+                onClick={() => {
+                  setDuration(30)
+                  restartTest()
+                }}                
+              >
+                30s
+              </button>
+
+              <button 
+                className={duration === 60 ? 'is-active' : ''}
+                onClick={() => {
+                  setDuration(60)
+                  restartTest()
+                }}
+              >60s</button>
             </>
           )}
 

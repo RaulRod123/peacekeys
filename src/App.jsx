@@ -211,7 +211,7 @@ function App() {
     [text, renderWordIndex]
   )
 
-  const recentRuns = history.slice(0, 5)
+  const recentRuns = history.slice(0, 15)
 
   const bestRun = history.reduce((best, run) => {
     if (!best || run.wpm > best.wpm) return run

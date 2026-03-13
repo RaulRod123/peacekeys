@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top:80px;
+  padding-top:40px;
 }
 
 .container {
@@ -14,7 +14,7 @@
 }
 
 .title {
-  margin-bottom: 40px;
+  margin-bottom: 40px;  
 }
 
 .typing-box {
@@ -166,6 +166,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 170px;
+  overflow-y: auto;
+  padding-right: 6px;
 }
 
 .history-item {

@@ -450,7 +450,7 @@ function App() {
                 className={mode === 'quotes' ? 'is-active' : ''}
                  onClick={() => handleModeChange('quotes')}
               >
-                Quote Mode
+                Stoic Mode
               </button>
 
               <button 

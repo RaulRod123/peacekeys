@@ -16,6 +16,19 @@ const QUOTE_POOL = [
   'Let your wife be a fountain of blessing for you. Rejoice in the wife of your youth.',
   'Such is the fate of all who are greedy for money; it robs them of life.',
   'Tune your ears to wisdom, and concentrate on understanding. Cry out for insight, and ask for understanding. Search for them as you would for silver; seek them like hidden treasures.',
+  'He grants a treasure of common sense to the honest. He is a sheild to those who walk with integrity.',
+  'Joyful is the person who finds wisdom, the one who gains undrstanding. For wisdom is more profitable than silver, and her wages are better then gold.',
+  'Wisdom is more precious than rubies; nothing you desire can compare with her. She offers you long life in her right hand, and riches and honor in her left.',
+  'My child, do not lose sight of common sense and discernment. Hang on to them, for they will refresh your soul.',
+  'Do not plot harm against your neighbor, for those who live nearby trust you. Do not pick a fight without reason, when no one has done you harm.',
+  'Do not envy violent people or copy their ways. Such wicked people are detestable to the Lord, but he offers his friendship to the godly.',
+  'Forget everything else. Keep hold of this alone and remember it: Each of us lives only now, this brief instant. The rest has been lived already, or is impossible to see.',
+  'Your ability to control your thoughts - treat it with respect. It is all that protects your mind from false perceptions - false to your nature, and that of all rational beings.',
+  'To make your mind your guide to what seems best: even people who deny the gods do that. Even people who betray their country.',
+  'My mind. What is it? What am I making of it? What am I using it for? Is it empty of thoughts? Isolated and torn loose from those around it?',
+  'This is what you deserve. You could be good today. But instead you choose tomorrow.',
+  'To do harm is to do yourself harm. To do an injustice is to do yourself an injustice - it degrades you.',
+
 ]
 
 

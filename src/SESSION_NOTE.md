@@ -7,65 +7,63 @@
 - No prompting Raul to run commands unless Raul explicitly asks for command help.
 
 ## What We Completed This Session
-1. Re-evaluated the test layout and confirmed the issue was more about spacing and stats height than simple JSX order.
-2. Adjusted the layout spacing in `src/App.css` so the page feels more compact and the test area sits better on the screen.
-3. Kept the timer placement as-is; current placement feels good.
-4. Kept visible history direction moving toward a tighter footprint instead of expanding the page vertically.
-5. Added a scrollable history list in the Stats panel so older runs remain accessible without taking over the page.
-6. Increased rendered history beyond the visible window so scrolling is meaningful.
-7. Landed on showing a smaller visible portion of history while still keeping access to more runs through scroll.
-8. Confirmed the scroll change opened up more room and improved the overall page balance.
-9. Revisited the test placement concern and determined it may be more of a controls/UI clarity issue than a raw layout issue.
-10. Added active-state behavior for the duration buttons so the selected timer is now visually indicated like the selected mode.
-11. Confirmed the duration active-state logic works in local/dev testing.
+1. Reviewed the current beta-readiness state and identified that the most important remaining technical risk is still fragile `localStorage` history loading.
+2. Chose to keep the current Backspace behavior as-is for now instead of treating it as a blocker.
+3. Decided to prioritize vocabulary/content work before feedback, history hardening, and domain work.
+4. Refactored the inline `WORD_POOL` and `QUOTE_POOL` data out of `src/App.jsx` into separate data files.
+5. Created `src/data/wordPool.js` for the word list.
+6. Created `src/data/quotePool.js` for the quote list.
+7. Updated `src/App.jsx` imports so the app now reads words and quotes from the new data files instead of storing that content directly in the main component.
+8. Confirmed the refactor worked after resolving an import/path issue during setup.
+9. Re-added the full quote list into `QUOTE_POOL` after initially only having a small subset in the new file.
+10. Confirmed the app is currently loading and the import structure now looks correct.
+11. Noted that a temporary crash/reload appeared to wipe prior local history, reinforcing that history storage is still a fragile part of the app.
+12. Reviewed the current quote list and found a few text typos that still need cleanup.
 
 ## Current App Status
-- Typing test still runs normally.
-- Test completion still works.
-- Timer placement currently feels good.
-- History records are saving to `localStorage`.
-- Stats panel remains the combined stats/results surface.
-- History list is scrollable, which saves space and keeps older runs accessible.
-- The current selected mode is visually active.
-- The current selected duration is now visually active.
-- Layout feels more stable after spacing adjustments and the history scroll change.
-- App is feeling close to beta-ready for a small initial release.
+- Typing test still runs.
+- Words mode and quote mode are both still wired correctly.
+- Word and quote content now live outside `App.jsx`, which keeps the main component cleaner.
+- `src/data/wordPool.js` is active and valid.
+- `src/data/quotePool.js` is active and valid.
+- Current quote pool contains the restored larger list.
+- History is still stored in `localStorage`.
+- History loading is still not protected against malformed saved data.
+- The app appears stable again after the temporary import/crash issue.
+
+## Content Notes
+- Quote pool still has a few typos to fix:
+  - `sheild` should be `shield`
+  - `undrstanding` should be `understanding`
+  - `better then gold` should be `better than gold`
+- Raul may continue adding more words and quotes directly in the new data files.
 
 ## Product Direction
-- Keep recent visible history compact for now.
-- Keep timer where it is for now.
-- Separate data/history page is still a future idea.
-- Next major goal is moving toward beta so real user/data feedback can start.
+- Keep expanding the content pool now that the data is separated cleanly from the component.
+- Continue using local-only history for now, but treat storage hardening as an upcoming stability task.
+- Move toward beta by improving clarity and trust before adding larger features.
+- Feedback collection is still the next major product addition after content work.
 
 ## Open Items / Next Steps
-1. Do one focused beta-readiness pass on the newest changes:
-   - scrollable history
-   - duration active state
-   - timer placement
-   - stats hide/show behavior
-   - restart behavior
-2. Decide whether the current controls area needs a clarity pass before beta:
-   - mode selection
-   - duration selection
-   - restart button placement
-3. Add a practical cap to saved history so `localStorage` data does not grow forever.
-4. Define the beta scope clearly:
+1. Finish expanding and cleaning the vocabulary and quote pools.
+2. Fix the remaining quote typos in `src/data/quotePool.js`.
+3. Add a feedback section so users can share thoughts, bugs, and suggestions.
+4. Add a practical cap to saved history so `localStorage` does not grow forever.
+5. Make history loading safer so malformed saved data cannot crash the app on load.
+6. Choose and secure a domain name.
+7. Lock the beta scope clearly:
    - words mode
    - quote mode
    - 30s / 60s
    - local history only
    - no accounts
    - no cloud sync
-5. Prepare for beta push next session with the goal of starting to collect usage/data feedback.
 
 ## Priority For Next Session
-1. Beta readiness over new feature work.
-2. Stability and clarity over extra polish.
-3. Only fix issues that are:
-   - broken
-   - confusing
-   - distracting enough to reduce trust
-4. Avoid adding larger new features until the beta target is clearly locked.
+1. Finish content expansion first.
+2. Add feedback collection next.
+3. Harden local history storage after that.
+4. Lock domain and beta scope once the product feels stable enough to share.
 
 ## Reminder For Future Chats
 - Codex is only for guidance.

@@ -29,8 +29,8 @@ const QUOTE_POOL = [
   'This is what you deserve. You could be good today. But instead you choose tomorrow.',
   'To do harm is to do yourself harm. To do an injustice is to do yourself an injustice - it degrades you.',
   /// David Goggins///
-  'Life is short, life is precious. Spend that time with people you love, the poeple you want to give that time to. Real friends, real family. Everybody else is sucking up the air you breathe.',
-  'We are all being test in life. While my test is different than yours, you will be tested. And how your face that test and how you overcome that test, determines the rest of your life.',
+  'Life is short, life is precious. Spend that time with people you love, the people you want to give that time to. Real friends, real family. Everybody else is sucking up the air you breathe.',
+  'We are all being tested in life. While my test is different than yours, you will be tested. And how you face that test and how you overcome that test, determines the rest of your life.',
   'The one mentality you must have in life is regardless with what is in front of you, you still must grind. I fail at most things I do but still, I grind.',
   'Inspiration is found in every first step you take. Every gasp of that iron bar. All the miles in the pool. Inspiration is found in suffering.',
   'I did not hear a whistle blow in my life, so I am going to keep on playing.',

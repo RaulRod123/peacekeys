@@ -2,11 +2,11 @@ const QUOTE_POOL = [
   'To direct your thoughts to what is said. To focus the mind on what happens and what makes it happen.',
   'So other people hurt me? That is their problem. Their character and actions are not mine. What is done to me is ordained by nature, what I do by my own.',
   'It is crazy to want what is impossible. And impossible for the wicked not to do so.',
-  'To labor cheerfully and so endure, endure the wind that blows from heaven.',
+  'To labor cheerfully and so endure and to endure the wind that blows from heaven.',
   'To love only what happens, what was destined. No greater harmony.',
   'Not a dancer but a wrestler: waiting, poised and dug in, for sudden assault.',
   'Never let loyalty and kindness leave you! Tie them around your neck as a reminder. Write them deep within your heart.',
-  'Seek his will in all you do, and he will show you which path to take.',
+  'Seek His will in all you do, and He will show you which path to take.',
   'Awaken; return to yourself. Now, no longer asleep, knowing they were only dreams, clear-headed again, treat everything around you as a dream.',
   'Fear of the Lord is the foundation of true knowledge, but fools despise wisdom and discipline.',
   'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',
@@ -28,18 +28,18 @@ const QUOTE_POOL = [
   'My mind. What is it? What am I making of it? What am I using it for? Is it empty of thoughts? Isolated and torn loose from those around it?',
   'This is what you deserve. You could be good today. But instead you choose tomorrow.',
   'To do harm is to do yourself harm. To do an injustice is to do yourself an injustice - it degrades you.',
-  /// David Goggins///
+  // David Goggins//
   'Life is short, life is precious. Spend that time with people you love, the people you want to give that time to. Real friends, real family. Everybody else is sucking up the air you breathe.',
   'We are all being tested in life. While my test is different than yours, you will be tested. And how you face that test and how you overcome that test, determines the rest of your life.',
-  'The one mentality you must have in life is regardless with what is in front of you, you still must grind. I fail at most things I do but still, I grind.',
-  'Inspiration is found in every first step you take. Every gasp of that iron bar. All the miles in the pool. Inspiration is found in suffering.',
+  'The one mentality you must have in life is regardless of what is in front of you, you still must grind. I fail at most things I do but still, I grind.',
+  'Inspiration is found in every first step you take. Every grasp of that iron bar. All the miles in the pool. Inspiration is found in suffering.',
   'I did not hear a whistle blow in my life, so I am going to keep on playing.',
   'I would rather you hate me and get better than like me and stay the same.',
   'You have to do your best work when you are least motivated. So those days you do not want to do it; guess what you have to do? You got to suck it up and do it.',
   'You live uncomfortable to gain growth. You have to have friction in your life to gain growth.',
-  /// Kobe Bryant///
+  // Kobe Bryant//
   'Rest at the end, not in the middle.',
-  'Like I would watch Magic play, I would watch Michael plan. I would see them do these unbelievable things and I said you know, "Can I get to that level? I don`t know but let`s find out."',
+  'Like I would watch Magic play, I would watch Michael play. I would see them do these unbelievable things and I said you know, "Can I get to that level? I do not know but lets find out."',
 ]
 
 

@@ -7,67 +7,72 @@
 - No prompting Raul to run commands unless Raul explicitly asks for command help.
 
 ## What We Completed This Session
-1. Reviewed the current beta-readiness state and identified that the most important remaining technical risk is still fragile `localStorage` history loading.
-2. Chose to keep the current Backspace behavior as-is for now instead of treating it as a blocker.
-3. Decided to prioritize vocabulary/content work before feedback, history hardening, and domain work.
-4. Refactored the inline `WORD_POOL` and `QUOTE_POOL` data out of `src/App.jsx` into separate data files.
-5. Created `src/data/wordPool.js` for the word list.
-6. Created `src/data/quotePool.js` for the quote list.
-7. Updated `src/App.jsx` imports so the app now reads words and quotes from the new data files instead of storing that content directly in the main component.
-8. Confirmed the refactor worked after resolving an import/path issue during setup.
-9. Re-added the full quote list into `QUOTE_POOL` after initially only having a small subset in the new file.
-10. Confirmed the app is currently loading and the import structure now looks correct.
-11. Noted that a temporary crash/reload appeared to wipe prior local history, reinforcing that history storage is still a fragile part of the app.
-12. Reviewed the current quote list and found a few text typos that still need cleanup.
+1. Reviewed the current beta-readiness priorities and chose to focus on feedback collection first.
+2. Added feedback state into `src/App.jsx`.
+3. Added a feedback form UI to the app.
+4. Moved the feedback panel so it only appears after a completed typing test.
+5. Changed the feedback panel to a floating card in the top-right corner.
+6. Fixed multiple JSX/CSS issues while wiring the feedback panel:
+   - missing fragment close in controls
+   - `className` typo
+   - `onChange` typo
+   - CSS selector typos
+   - floating panel styling issues
+7. Prevented the feedback panel from conflicting with the app-wide click-to-focus behavior by stopping click propagation on the panel.
+8. Switched feedback submission from localStorage to Formspree.
+9. Confirmed that completed test feedback is now being received in Formspree.
 
 ## Current App Status
 - Typing test still runs.
-- Words mode and quote mode are both still wired correctly.
-- Word and quote content now live outside `App.jsx`, which keeps the main component cleaner.
-- `src/data/wordPool.js` is active and valid.
-- `src/data/quotePool.js` is active and valid.
-- Current quote pool contains the restored larger list.
-- History is still stored in `localStorage`.
-- History loading is still not protected against malformed saved data.
-- The app appears stable again after the temporary import/crash issue.
+- Words mode and quote mode are still active.
+- 30s and 60s are still active.
+- Local history is still being saved for typing test results.
+- Feedback now appears only after a finished test.
+- Feedback is now sent privately through Formspree instead of being stored locally.
+- Floating feedback panel is currently positioned in the top-right corner.
+- Feedback submissions are currently working.
 
-## Content Notes
-- Quote pool still has a few typos to fix:
-  - `sheild` should be `shield`
-  - `undrstanding` should be `understanding`
-  - `better then gold` should be `better than gold`
-- Raul may continue adding more words and quotes directly in the new data files.
+## Known Issues / Cleanup Items
+- `handleFeedbackSubmit` still has a request header typo:
+  - `'Content-Type': 'application/join'` should be `'application/json'`
+- ESLint still reports one issue:
+  - `catch (error)` is unused and should be changed to `catch {` or `catch (_error)`
+- History loading is still fragile:
+  - `JSON.parse(saved)` is unguarded for `peacekeys-history`
+- History saving is still uncapped:
+  - saved run history can grow forever in localStorage
+- Feedback no longer needs localStorage, so the old local feedback storage approach is no longer part of the product direction
 
 ## Product Direction
-- Keep expanding the content pool now that the data is separated cleanly from the component.
-- Continue using local-only history for now, but treat storage hardening as an upcoming stability task.
-- Move toward beta by improving clarity and trust before adding larger features.
-- Feedback collection is still the next major product addition after content work.
+- Keep typing result history local-only for beta.
+- Keep feedback private through Formspree so only Raul can review submissions.
+- Improve stability and trust before adding larger features.
+- Next major content/product improvement after storage hardening is quote attribution and source credit.
 
 ## Open Items / Next Steps
-1. Finish expanding and cleaning the vocabulary and quote pools.
-2. Fix the remaining quote typos in `src/data/quotePool.js`.
-3. Add a feedback section so users can share thoughts, bugs, and suggestions.
-4. Add a practical cap to saved history so `localStorage` does not grow forever.
-5. Make history loading safer so malformed saved data cannot crash the app on load.
-6. Choose and secure a domain name.
-7. Lock the beta scope clearly:
-   - words mode
-   - quote mode
-   - 30s / 60s
-   - local history only
-   - no accounts
-   - no cloud sync
+1. Fix the Formspree request header typo in `src/App.jsx`.
+2. Fix the lint error caused by the unused `catch (error)` variable.
+3. Harden local history loading so malformed saved data cannot crash the app.
+4. Add a practical cap to saved typing history in localStorage.
+5. Convert quote data from plain strings into structured objects.
+6. Add quote attribution fields such as:
+   - `text`
+   - `author`
+   - `source`
+7. Update the UI so quote sources/authors can be shown clearly.
+8. Revisit wording for `Stoic Mode` since the quote pool now includes multiple source types.
+9. Continue domain/beta polish later after storage and attribution are in a better place.
 
 ## Priority For Next Session
-1. Finish content expansion first.
-2. Add feedback collection next.
-3. Harden local history storage after that.
-4. Lock domain and beta scope once the product feels stable enough to share.
+1. Fix the small Formspree cleanup items:
+   - content-type typo
+   - unused catch variable
+2. Harden local history storage next.
+3. Add quote attribution/source support after that.
+4. Revisit wording/polish once those are stable.
 
 ## Reminder For Future Chats
-- Codex is only for guidance.
-- Codex must make zero file changes unless Raul explicitly requests direct edits in that chat.
+- Codex is only for guidance unless Raul explicitly asks for direct edits in that chat.
 - Raul makes the changes, runs the commands, and decides what gets committed.
 - Do not assume permission to edit just because a file is open or a task is described.
 - No prompting Raul to run commands unless he explicitly asks for command help.

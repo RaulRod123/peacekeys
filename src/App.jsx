@@ -130,6 +130,10 @@ function App() {
   // STATE
   // ===========================
   const [time, setTime] = useState(0)
+  const [feedbackType, setFeedbackType] = useState('general')
+  const [feedbackMessage, setFeedbackMessage] = useState('')
+  const [feedbackContact, setFeedbackContact] = useState('')
+  const [feedbackStatus, setFeedbackStatus] = useState('idle')
   const [isRunning, setIsRunning] = useState(false)
   const [duration, setDuration] = useState(60)
   const [isFinished, setIsFinished] = useState(false)
@@ -264,6 +268,41 @@ function App() {
   // ===========================
   // HANDLERS / ACTIONS
   // ===========================
+  const handleFeedbackSubmit = useCallback(async (e) => {
+    e.preventDefault()
+
+    if (!feedbackMessage.trim()) {
+      setFeedbackStatus('error')
+      return
+    }
+
+    setFeedbackStatus('sending')
+
+    try { 
+      const response = await fetch('https://formspree.io/f/xkoqpkpk', {
+        method: 'POST',
+        headers: { 
+          'Content-Type' : 'application/json',
+          Accept: 'application/json',        
+        },
+        body: JSON.stringify({
+          type: feedbackType.trim(),
+          message:feedbackMessage.trim(),
+          contact: feedbackContact.trim(),
+        }),
+      })
+    if (!response.ok) {
+      throw new Error('Feedback submission failed')
+    }
+    
+    setFeedbackMessage('')
+    setFeedbackContact('')
+    setFeedbackType('general')
+    setFeedbackStatus('success')
+    } catch (_error) {
+      setFeedbackStatus('error')
+    }
+ }, [feedbackType, feedbackMessage, feedbackContact])
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -368,7 +407,7 @@ function App() {
                <strong className="history-stat-value">
                   {bestRun ? bestRun.wpm : '--'}                
                 </strong>
-              </div>
+              </div>       
 
              <div className="history-stat-card">
                <span className="history-stat-label">7-Day Avg</span>
@@ -400,6 +439,68 @@ function App() {
             </ul>
           )}
         </section>
+      
+        {isFinished && (
+          <section
+            className="feedback-panel"
+            onClick={(e) => e.stopPropagation()}
+          >
+        
+            <h2>Feedback</h2>
+            <p className="feedback-copy">
+              Welcome to PeaceKeys Beta! Please help me improve your experience by sending some feedback. Keep on typing!
+            </p>
+
+            <form className="feedback-form" onSubmit={handleFeedbackSubmit}>
+              <label>
+                <span>Type</span>
+                <select
+                  value={feedbackType}
+                  onChange={(e) => setFeedbackType(e.target.value)}
+                >
+                  <option value="general">General Feedback</option>
+                  <option value="bug">Bug Report</option>
+                  <option value="idea">Idea</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Message</span>
+                <textarea
+                  value={feedbackMessage}
+                  onChange={(e) => setFeedbackMessage(e.target.value)}
+                  placeholder="What stood out? What felt confusing? What should improve?"
+                  rows={3}
+                />
+              </label>
+
+              <label>
+                <span>Contact (Optional)</span>
+                <input
+                  type="text"
+                  value={feedbackContact}
+                  onChange={(e) => setFeedbackContact(e.target.value)}
+                  placeholder="Email or name"
+                />
+              </label>
+            
+              <button type="submit">Send Feedback</button>
+
+              {feedbackStatus === 'sending' && (
+                <p className="feedback-sending">Sending feedback</p>
+              )}
+
+              {feedbackStatus === 'success' && (
+                <p className="feedback-success">Thanks for sharing your feedback.</p>
+              )}
+
+              {feedbackStatus === 'error' && (
+                <p className="feedback-error">Please enter a message before submitting</p>
+              )}            
+            </form>
+          </section>
+        )}
+        
       
         <div className="controls">
           {!isRunning && (

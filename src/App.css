@@ -251,3 +251,71 @@
   font-weight: 600;
   color: #000000;
 }
+
+.feedback-panel {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: min(340px, calc(100vw - 32px));
+  padding: 14px 16px;
+  border: 1px solid rgba(66, 186, 230, 0.2);
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.96);
+  text-align: left;
+  color: #12343c;
+  box-shadow: 0 18px 40px rgba(16, 156, 177, 0.12);
+  z-index: 20;
+}
+
+.feedback-panel h2 {
+  margin: 0 0 10px;
+  color: #109cb1;
+}
+
+.feedback-copy {
+  margin: 0 0 14px;
+  font-style: normal;
+  color: #5f7c84;
+}
+
+.feedback-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-style: normal;
+}
+
+.feedback-form select,
+.feedback-form textarea,
+.feedback-form input {
+  padding: 10px 12px;
+  border: 1px solid rgba(16, 156, 177, 0.02);
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.feedback-form textarea {
+  resize: vertical;
+  min-height: 120px;  
+}
+
+.feedback-success,
+.feedback-error {
+  margin: 0;
+  font-style: normal;
+}
+
+.feedback-success {
+  color: #1f7a4d;
+}
+
+.feedback-error {
+  color: #c03636;
+}
+
+.feedback-sending {
+  margin: 0;
+  font-style: normal;
+  color: #109cb1;  
+}

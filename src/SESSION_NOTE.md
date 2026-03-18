@@ -62,6 +62,7 @@
 6. After quote/content polish is stable, continue domain and beta polish.
 
 ## Priority For Next Session
+Before step one complete this. Need to randomize the quotes better. They are repeating too closely to one another making it seem as there are less quotes
 1. Finish quote attribution polish in CSS.
 2. Complete quote metadata in `quotePool.js`.
 3. Rename `Stoic Mode` if a better label is chosen.

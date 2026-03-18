@@ -36,9 +36,23 @@ function generateText(length = 200) {
   }
   return words.join(' ')
 }
-function generateQuote() {
-  return QUOTE_POOL[Math.floor(Math.random() * QUOTE_POOL.length)]
+  function generateQuoteIndex(recentQuoteIndexes = []) {
+    const maxRecent = 6
+    const recentSet = new Set(recentQuoteIndexes.slice(-maxRecent))
+
+    if (recentSet.size >= QUOTE_POOL.length) {
+    return Math.floor(Math.random() * QUOTE_POOL.length)
+    } 
+
+  let nextIndex
+
+  do {
+    nextIndex = Math.floor(Math.random() * QUOTE_POOL.length)
+  } while (recentSet.has(nextIndex))
+  
+  return nextIndex  
 }
+
 
 function isTypingKey(key) {
   return key.length === 1 || key === 'Backspace'
@@ -146,7 +160,8 @@ function App() {
   const [typed, setTyped] = useState([])
   const [mistakes, setMistakes] = useState(0)
   const [history, setHistory] = useState([])
-  const [currentQuote, setCurrentQuote] = useState(() => generateQuote())
+  const [currentQuote, setCurrentQuote] = useState(() => QUOTE_POOL[0])
+  const [recentQuoteIndexes, setRecentQuoteIndexes] = useState([])
   
   const [resultSaved, setResultSaved] = useState(false)
   
@@ -375,13 +390,16 @@ function App() {
     setRenderWordIndex(WORDS_PER_LINE)
     
     if (nextMode === 'quotes') {
-      const nextQuote = generateQuote()
+      const nextQuoteIndex = generateQuoteIndex(recentQuoteIndexes)
+      const nextQuote = QUOTE_POOL[nextQuoteIndex]
+
       setCurrentQuote(nextQuote)
       setText(nextQuote.text)
+      setRecentQuoteIndexes((prev) => [...prev, nextQuoteIndex].slice(-6))
     } else {
       setText(generateText())
     }
-  }, [mode])
+  }, [mode, recentQuoteIndexes])
   
 
   const handleModeChange = useCallback((nextMode) => {
@@ -412,8 +430,17 @@ function App() {
 
         {mode === 'quotes' && currentQuote && isFinished && (
           <div className="quote-meta">
-            <p>{currentQuote.author || 'Unknown author'}</p>
-            <p>{currentQuote.source || 'Unknown source'}</p>
+            {currentQuote.source ? (
+              <span className="quote-source">{currentQuote.source}</span>
+            ) : (
+                <span className="quote-source">Source unknown</span>
+            )}
+
+            {currentQuote.author ? (
+              <span className="quote_author">{currentQuote.author}</span>
+            ) : (
+                <span className="quote-author">Author unkown</span>
+            )}
           </div>
         )}    
     

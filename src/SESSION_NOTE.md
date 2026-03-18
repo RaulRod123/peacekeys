@@ -7,72 +7,69 @@
 - No prompting Raul to run commands unless Raul explicitly asks for command help.
 
 ## What We Completed This Session
-1. Reviewed the current beta-readiness priorities and chose to focus on feedback collection first.
-2. Added feedback state into `src/App.jsx`.
-3. Added a feedback form UI to the app.
-4. Moved the feedback panel so it only appears after a completed typing test.
-5. Changed the feedback panel to a floating card in the top-right corner.
-6. Fixed multiple JSX/CSS issues while wiring the feedback panel:
-   - missing fragment close in controls
-   - `className` typo
-   - `onChange` typo
-   - CSS selector typos
-   - floating panel styling issues
-7. Prevented the feedback panel from conflicting with the app-wide click-to-focus behavior by stopping click propagation on the panel.
-8. Switched feedback submission from localStorage to Formspree.
-9. Confirmed that completed test feedback is now being received in Formspree.
+1. Reviewed the previous session note and confirmed the next focus was storage hardening and quote source support.
+2. Replaced typing-history storage from localStorage to IndexedDB through a new history helper.
+3. Confirmed the app was able to save typing history into IndexedDB.
+4. Converted `quotePool.js` from plain strings to structured quote objects.
+5. Added quote object support in `App.jsx` by introducing a generated quote object and using `quote.text` for typing content.
+6. Fixed blank-screen issues caused by:
+   - broken import path for `historyStorage`
+   - mixed string/object quote data
+   - missing function closure in `restartTest`
+   - object values being passed into `text`
+7. Added quote attribution rendering for finished quote tests.
+8. Updated quote attribution to show fallback text:
+   - `Unknown author`
+   - `Unknown source`
+9. Confirmed quote attribution now appears only after the quote test is finished.
 
 ## Current App Status
 - Typing test still runs.
 - Words mode and quote mode are still active.
 - 30s and 60s are still active.
-- Local history is still being saved for typing test results.
-- Feedback now appears only after a finished test.
-- Feedback is now sent privately through Formspree instead of being stored locally.
-- Floating feedback panel is currently positioned in the top-right corner.
-- Feedback submissions are currently working.
+- Feedback still appears only after a finished test.
+- Feedback is still sent privately through Formspree.
+- Quote mode now uses structured quote objects instead of plain strings.
+- Quote attribution now appears after a finished quote test.
+- Typing history is being saved to IndexedDB.
+- History persistence may still need one more sanity check after dev-server restarts.
 
 ## Known Issues / Cleanup Items
-- `handleFeedbackSubmit` still has a request header typo:
-  - `'Content-Type': 'application/join'` should be `'application/json'`
-- ESLint still reports one issue:
-  - `catch (error)` is unused and should be changed to `catch {` or `catch (_error)`
-- History loading is still fragile:
-  - `JSON.parse(saved)` is unguarded for `peacekeys-history`
-- History saving is still uncapped:
-  - saved run history can grow forever in localStorage
-- Feedback no longer needs localStorage, so the old local feedback storage approach is no longer part of the product direction
+- Many quote entries still have missing metadata:
+  - blank `author`
+  - blank `source`
+- `Stoic Mode` is now misleading because quote content includes more than stoic material.
+- History persistence may still be inconsistent across some restarts and should be rechecked later.
+- `handleFeedbackSubmit` still has product copy/error-message cleanup potential.
+- The feedback error message is currently used for both:
+  - empty message validation
+  - submission failure
+- CSS for quote attribution still needs polish.
 
 ## Product Direction
 - Keep typing result history local-only for beta.
 - Keep feedback private through Formspree so only Raul can review submissions.
-- Improve stability and trust before adding larger features.
-- Next major content/product improvement after storage hardening is quote attribution and source credit.
+- Continue improving trust, clarity, and polish before larger feature expansion.
+- Keep quote attribution/source support as part of the product direction.
+- Revisit naming and tone now that quote sources are broader than stoicism alone.
 
 ## Open Items / Next Steps
-1. Fix the Formspree request header typo in `src/App.jsx`.
-2. Fix the lint error caused by the unused `catch (error)` variable.
-3. Harden local history loading so malformed saved data cannot crash the app.
-4. Add a practical cap to saved typing history in localStorage.
-5. Convert quote data from plain strings into structured objects.
-6. Add quote attribution fields such as:
-   - `text`
-   - `author`
-   - `source`
-7. Update the UI so quote sources/authors can be shown clearly.
-8. Revisit wording for `Stoic Mode` since the quote pool now includes multiple source types.
-9. Continue domain/beta polish later after storage and attribution are in a better place.
+1. Polish the CSS for quote attribution so finished quote tests feel more intentional.
+2. Fill in missing `author` values in `src/data/quotePool.js`.
+3. Fill in missing `source` values in `src/data/quotePool.js`.
+4. Revisit the label `Stoic Mode` and rename it to better match the broader quote pool.
+5. Sanity-check IndexedDB history persistence again after normal restarts.
+6. After quote/content polish is stable, continue domain and beta polish.
 
 ## Priority For Next Session
-1. Fix the small Formspree cleanup items:
-   - content-type typo
-   - unused catch variable
-2. Harden local history storage next.
-3. Add quote attribution/source support after that.
-4. Revisit wording/polish once those are stable.
+1. Finish quote attribution polish in CSS.
+2. Complete quote metadata in `quotePool.js`.
+3. Rename `Stoic Mode` if a better label is chosen.
+4. Recheck IndexedDB history persistence.
+5. Revisit domain setup after the content and polish pass.
 
 ## Reminder For Future Chats
-- Codex is only for guidance unless Raul explicitly asks for direct edits in that chat.
+- CRITICAL: Codex is guidance-only unless Raul explicitly gives permission in that chat to make changes.
 - Raul makes the changes, runs the commands, and decides what gets committed.
-- Do not assume permission to edit just because a file is open or a task is described.
+- Do not assume permission to edit just because a task is described.
 - No prompting Raul to run commands unless he explicitly asks for command help.

@@ -332,12 +332,15 @@
 }
 .quote-source {
   text-align: left;
-  font-size: 14px;
-  color: #5f7c84;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: oblique;
+  color: #109cb1;
 }
 .quote-author {
   text-align: right;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  color: #12343c;
+  font-style:oblique;
+  color: #109cb1;
 }

@@ -160,9 +160,10 @@ function App() {
   const [typed, setTyped] = useState([])
   const [mistakes, setMistakes] = useState(0)
   const [history, setHistory] = useState([])
-  const [currentQuote, setCurrentQuote] = useState(() => QUOTE_POOL[0])
-  const [recentQuoteIndexes, setRecentQuoteIndexes] = useState([])
-  
+  const initialQuoteIndex = generateQuoteIndex([])
+
+  const [currentQuote, setCurrentQuote] = useState(() => QUOTE_POOL[initialQuoteIndex])
+  const [recentQuoteIndexes, setRecentQuoteIndexes] = useState([initialQuoteIndex])
   const [resultSaved, setResultSaved] = useState(false)
   
   const inputRef = useRef(null)
@@ -430,17 +431,13 @@ function App() {
 
         {mode === 'quotes' && currentQuote && isFinished && (
           <div className="quote-meta">
-            {currentQuote.source ? (
-              <span className="quote-source">{currentQuote.source}</span>
-            ) : (
-                <span className="quote-source">Source unknown</span>
-            )}
+            <span className="quote-source">
+              Source: {currentQuote.source || ''}
+            </span>
 
-            {currentQuote.author ? (
-              <span className="quote_author">{currentQuote.author}</span>
-            ) : (
-                <span className="quote-author">Author unkown</span>
-            )}
+            <span className="quote-author">
+              Author: {currentQuote.author|| ''}
+            </span> 
           </div>
         )}    
     

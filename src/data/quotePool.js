@@ -147,41 +147,41 @@ const QUOTE_POOL = [
   {
     text: 'We are all being tested in life. While my test is different than yours, you will be tested. And how you face that test and how you overcome that test, determines the rest of your life.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   {
     text: 'The one mentality you must have in life is regardless of what is in front of you, you still must grind. I fail at most things I do but still, I grind.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   {
     text: 'Inspiration is found in every first step you take. Every grasp of that iron bar. All the miles in the pool. Inspiration is found in suffering.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   {
     text: 'I did not hear a whistle blow in my life, so I am going to keep on playing.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },{
     text: 'I would rather you hate me and get better than like me and stay the same.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   {
     text: 'You have to do your best work when you are least motivated. So those days you do not want to do it; guess what you have to do? You got to suck it up and do it.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },  
   {
     text: 'Life is short, life is precious. Spend that time with people you love, the people you want to give that time to. Real friends, real family. Everybody else is sucking up the air you breathe.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   {
     text: 'You live uncomfortable to gain growth. You have to have friction in your life to gain growth.',
     author: 'David Goggins',
-    source: 'Video Short',
+    source: '',
   },
   // Kobe Bryant//
   {

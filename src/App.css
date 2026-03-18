@@ -319,3 +319,13 @@
   font-style: normal;
   color: #109cb1;  
 }
+
+.quote-meta {
+  margin: 12px auto 0;
+  text-align: center;
+  font-style: normal;
+  color: #5f7c84;  
+}
+.quote-meta p {
+  margin: 4px 0;
+}

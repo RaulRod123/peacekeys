@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react'
 import './App.css'
+import { loadHistory, saveHistoryRecord } from './utils/historyStorage'
 import ResultsSummary from './components/ResultsSummary'
 import WORD_POOL from './data/wordPool'
 import QUOTE_POOL from './data/quotePool'
@@ -34,7 +35,7 @@ function generateText(length = 200) {
   }
   return words.join(' ')
 }
-function generateQuoteText() {
+function generateQuote() {
   return QUOTE_POOL[Math.floor(Math.random() * QUOTE_POOL.length)]
 }
 
@@ -143,10 +144,8 @@ function App() {
   const [cursor, setCursor] = useState(0)
   const [typed, setTyped] = useState([])
   const [mistakes, setMistakes] = useState(0)
-  const [history, setHistory] = useState(() => {
-    const saved = localStorage.getItem('peacekeys-history')
-    return saved ? JSON.parse(saved) : []  
-  })  
+  const [history, setHistory] = useState([])
+  const [currentQuote, setCurrentQuote] = useState(() => generateQuote())
   
   const [resultSaved, setResultSaved] = useState(false)
   
@@ -220,6 +219,26 @@ function App() {
   }, [])
 
   useEffect(() => {
+    let isMounted = true
+
+    loadHistory()
+    .then((savedHistory) => {
+      if (isMounted) {
+        setHistory(savedHistory)
+      }
+    })
+    .catch(() => {
+      if (isMounted) {
+        setHistory([])
+      }
+    })
+  
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  useEffect(() => {
     if (!isRunning) return
 
     const interval = setInterval(() => {
@@ -256,11 +275,13 @@ function App() {
       accuracy,
     }
 
-    setHistory((prev) => {
-      const updated = [newRecord, ...prev]
-      localStorage.setItem('peacekeys-history', JSON.stringify(updated))
-      return updated
-    })
+    saveHistoryRecord(newRecord)
+      .then((savedHistory) => {
+        setHistory(savedHistory)
+      })
+      .catch(() => {
+        setHistory((prev) => [newRecord, ...prev].slice(0,100))
+      })
 
     setResultSaved(true)
   }, [isFinished, resultSaved, mode, duration, wpm, accuracy])
@@ -351,8 +372,16 @@ function App() {
     setTyped([])
     setMistakes(0)
     setRenderWordIndex(WORDS_PER_LINE)
-    setText(nextMode === 'quotes' ? generateQuoteText() : generateText())    
+    
+    if (nextMode === 'quotes') {
+      const nextQuote = generateQuote()
+      setCurrentQuote(nextQuote)
+      setText(nextQuote.text)
+    } else {
+      setText(generateText())
+    }
   }, [mode])
+  
 
   const handleModeChange = useCallback((nextMode) => {
     setMode(nextMode)
@@ -378,7 +407,14 @@ function App() {
           cursor={cursor}
           typed={typed}
           isFinished={isFinished}
-        />    
+        />
+
+        {mode === 'quotes' && currentQuote && isFinished && (
+          <div className="quote-meta">
+            <p>{currentQuote.author || 'Unknown author'}</p>
+            <p>{currentQuote.source || 'Unknown source'}</p>
+          </div>
+        )}    
     
         {isRunning && (
           <div className="test-timer">

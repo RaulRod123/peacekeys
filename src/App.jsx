@@ -4,6 +4,7 @@ import { loadHistory, saveHistoryRecord } from './utils/historyStorage'
 import ResultsSummary from './components/ResultsSummary'
 import WORD_POOL from './data/wordPool'
 import QUOTE_POOL from './data/quotePool'
+import { Analytics } from '@vercel/analytics/react'
 
 
 
@@ -579,6 +580,7 @@ function App() {
           <button onClick={() => restartTest()}>Restart</button>
         </div>
       </div>
+      <Analytics />
     </div>
   )
 }

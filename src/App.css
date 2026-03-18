@@ -322,9 +322,9 @@
 
 .quote-meta {
   margin: 12px auto 0;
-  text-align: center;
+  text-align:center; 
   font-style: normal;
-  color: #5f7c84;  
+  color: #0d0e0e;  
 }
 .quote-meta p {
   margin: 4px 0;

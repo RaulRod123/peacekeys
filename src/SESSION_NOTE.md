@@ -7,26 +7,24 @@
 - No prompting Raul to run commands unless Raul explicitly asks for command help.
 
 ## What We Completed This Session
-1. Reviewed the previous session note and confirmed the next focus was quote repetition, quote attribution polish, and quote metadata cleanup.
-2. Confirmed Vercel is connected to the custom domain and the site is live.
-3. Improved quote randomization in `App.jsx` so quote mode avoids recently used quotes instead of repeating too closely.
-4. Fixed quote-mode issues caused during the randomization update:
-   - blank screen from outdated function usage
-   - quote restart logic issues
-   - recent quote tracking being saved incorrectly
-5. Confirmed quote mode, word mode, restart, 30s, and 60s are all working again.
-6. Updated finished quote attribution layout so it displays horizontally.
-7. Updated attribution display so:
-   - `Source:` appears on the left
-   - `Author:` appears on the right
-   - labels still show even when metadata is blank
-8. Improved quote attribution CSS so the finished quote section feels more intentional.
-9. Cleaned up a large portion of quote metadata in `src/data/quotePool.js`.
-10. Separated many quote sources more clearly, especially between:
-   - `Meditations`
-   - `Proverbs`
-   - `Psalms`
-   - `Philippians`
+1. Re-read the session note and followed the guidance-only workflow.
+2. Reviewed the recent UI changes in `src/App.jsx` and `src/App.css`.
+3. Confirmed the new motto was added under the PeaceKeys title:
+   - `Type Better, Be Better`
+4. Reviewed the smaller feedback panel changes for desktop, laptop, and mobile considerations.
+5. Cleaned up the feedback feature after removing the contact field:
+   - removed leftover contact submission logic
+   - removed leftover contact reset logic
+   - removed leftover contact callback dependency usage
+6. Improved feedback error handling so validation and submission failure are no longer treated as the same problem.
+7. Confirmed the feedback flow now supports separate states for:
+   - empty message
+   - sending
+   - success
+   - failed submission
+8. Identified that the visible layout jump after finishing a test is not mainly caused by the feedback panel.
+9. Narrowed the layout-jump issue down to quote mode / Stoic Mode behavior, especially the finished quote attribution area.
+10. Decided not to force a rushed fix for the quote-mode layout jump in this session.
 
 ## Current App Status
 - Typing test still runs.
@@ -35,22 +33,26 @@
 - Restart is working.
 - Feedback still appears only after a finished test.
 - Feedback is still sent privately through Formspree.
+- Feedback no longer includes a contact field.
+- Feedback now has separate handling for:
+  - empty message validation
+  - submission failure
 - Quote mode uses structured quote objects instead of plain strings.
 - Quote attribution appears only after the quote test is finished.
-- Quote attribution now shows labeled `Source:` and `Author:` fields.
+- Quote attribution still shows labeled `Source:` and `Author:` fields.
 - Quote repetition has been reduced by avoiding recently used quotes.
 - Typing history is being saved to IndexedDB.
 - The site is live on the connected custom domain.
+- The new motto appears below the title.
 
 ## Known Issues / Cleanup Items
 - `Stoic Mode` is now misleading because quote content includes more than stoic material.
 - Some quote metadata may still need verification or refinement.
 - `currentQuote` initialization may still be using a simpler starting value than the newer anti-repeat quote picker.
 - History persistence may still be inconsistent across some restarts and should be rechecked later.
-- `handleFeedbackSubmit` still has product copy and error-message cleanup potential.
-- The feedback error message is currently used for both:
-  - empty message validation
-  - submission failure
+- Quote mode / Stoic Mode still has a layout jump when finishing or leaving a test.
+- The jump appears to be tied more to quote attribution / finished-state layout than to the feedback panel itself.
+- Some CSS added during jump testing may need cleanup if no longer used.
 - `quotePool.js` could be organized more clearly into grouped sections for easier maintenance.
 
 ## Product Direction
@@ -67,15 +69,16 @@
 3. Finish reviewing any remaining quote metadata for consistency and accuracy.
 4. Decide whether quote categories should stay mixed or become selectable later.
 5. Sanity-check IndexedDB history persistence again after normal restarts.
-6. Clean up feedback copy and separate empty-message errors from submission-failure errors.
-7. Continue beta polish based on real user feedback from the live site.
+6. Investigate the quote-mode layout jump in a more isolated way before changing the feedback panel further.
+7. Clean up any unused CSS related to the attempted feedback/quote visibility experiments.
+8. Continue beta polish based on real user feedback from the live site.
 
 ## Priority For Next Session
 1. Rename `Stoic Mode` if a better label is chosen.
-2. Organize the quote pool for cleaner maintenance.
-3. Recheck IndexedDB history persistence.
-4. Clean up feedback wording and error states.
-5. Continue domain and beta polish based on actual use.
+2. Investigate and fix the quote-mode finished-state layout jump.
+3. Organize the quote pool for cleaner maintenance.
+4. Recheck IndexedDB history persistence.
+5. Continue beta polish based on actual usage and feedback.
 
 ## Reminder For Future Chats
 - CRITICAL: Codex is guidance-only unless Raul explicitly gives permission in that chat to make changes.
@@ -92,7 +95,7 @@
   - benchmark comparisons against other users
   - comparisons by region, age range, sex, and other relevant demographic groupings if implemented ethically and clearly
   - charts, graphs, and visual summaries that feel closer to Tableau-style reporting than a simple stats page
-  - scenario exploration or “what-if” views for performance goals and improvement planning
+  - scenario exploration or what-if views for performance goals and improvement planning
 - Future account-based product work should keep this analytics/dashboard direction in mind when making decisions about data structure, history storage, metrics, and feature design.
 - For now, beta remains focused on trust, usability, content quality, local history, and product polish before expanding into full accounts, dashboards, and broader analytics.
 - CRITICAL: A future goal is to create an AI-guided personal typing coach for each user.

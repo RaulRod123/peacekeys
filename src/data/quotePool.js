@@ -194,7 +194,56 @@ const QUOTE_POOL = [
     author: 'Kobe Bryant',
     source: 'Video Short',
   }, 
-  
+  {
+    text: 'Not to be driven this way and that, but always to behave with justice and see things as they are.',
+    author:'Marcus Aurelius',
+    source:'Meditations',
+  },
+  {
+    text: 'If you want it bad enough, you find a way. If you do not want it bad enough, you will find an excuse.',
+    author:'unknown',
+    source:'unknown',
+  },
+  {
+    text: 'Confidence and fear both require believing in something that has not happened yet. But at a certain point, you have to consider, you are choosing to be afraid.',
+    author: 'Chris Williamson',
+    source: 'Modern Wisdom Podcast',
+  },
+  {
+    text: 'And you are going to fail, and you are going to fail, and you are going to fail. And then, you are going to win.',
+    author:'Jocko Wilink',
+    source:'Jocko Podcast',
+  },
+  {
+    text: 'Tired? Does not mean nothing. Tired is only in the mind. You tell yourself you are tired, you are going to be tired. I do not get tired.',
+    author:'LeBron James',
+    source:'Post game interview',
+  },
+  {
+    text: 'Everyone is jealous of what you got. No one is jealous of how you got it.',
+    author:'Chris Williamson',
+    source:'Modern Wisdom Podcast',
+  },
+  {
+    text: 'We must constantly look at things in a different way. Boys, you must strive to find your own voice because the longer you wait to begin, the less likely you are to find it at all.',
+    author:'Robin Williams',
+    source:'Dead Poets Society',
+  },
+  {
+    text: 'So said, "Most men lead lives of quiet desperation." Do not be resigned to that.',
+    author:'Robin Williams',
+    source:'Dead Poets Society',
+  },
+  {
+    text: 'Champions are never woken up and born into success. They are created, they are matured, they are struggled. Then, through that effort of hard work, dedication and sacrifice to achieve that championship status.',
+    author:'Greg Plitt',
+    source:'YT short',
+  },
+  {
+    text: 'Failure is a wonderful teacher. It is the only way to learn, you have to fail. Failure is part of the process to becoming successful.',
+    author:'Steve Harvey',
+    source:'Post-show',
+  },
 ]
 
 

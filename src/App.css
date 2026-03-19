@@ -13,8 +13,26 @@
   font-style: italic;
 }
 
+.top-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  max-width: min(1100px, 95vw);
+  margin: 0 auto 20px;
+}
+.brand-block {
+  text-align: center;  
+}
+
+
 .title {
-  margin-bottom: 40px;  
+  margin: 0;
+  font-size: 2.8rem;  
+}
+.motto {
+  margin: 4px 0 0;
+  font-size: 1.4rem;  
 }
 
 .typing-box {
@@ -254,9 +272,9 @@
 
 .feedback-panel {
   position: fixed;
-  right: 20px;
+  right: 16px;
   top: 20px;
-  width: min(340px, calc(100vw - 32px));
+  width: min(300px, calc(100vw - 32px));
   padding: 14px 16px;
   border: 1px solid rgba(66, 186, 230, 0.2);
   border-radius: 18px;
@@ -273,7 +291,7 @@
 }
 
 .feedback-copy {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   font-style: normal;
   color: #5f7c84;
 }
@@ -297,7 +315,7 @@
 
 .feedback-form textarea {
   resize: vertical;
-  min-height: 120px;  
+  min-height: 90px;  
 }
 
 .feedback-success,

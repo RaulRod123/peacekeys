@@ -147,8 +147,7 @@ function App() {
   // ===========================
   const [time, setTime] = useState(0)
   const [feedbackType, setFeedbackType] = useState('general')
-  const [feedbackMessage, setFeedbackMessage] = useState('')
-  const [feedbackContact, setFeedbackContact] = useState('')
+  const [feedbackMessage, setFeedbackMessage] = useState('')  
   const [feedbackStatus, setFeedbackStatus] = useState('idle')
   const [isRunning, setIsRunning] = useState(false)
   const [duration, setDuration] = useState(60)
@@ -325,22 +324,20 @@ function App() {
         },
         body: JSON.stringify({
           type: feedbackType.trim(),
-          message:feedbackMessage.trim(),
-          contact: feedbackContact.trim(),
+          message:feedbackMessage.trim(),          
         }),
       })
     if (!response.ok) {
       throw new Error('Feedback submission failed')
     }
     
-    setFeedbackMessage('')
-    setFeedbackContact('')
+    setFeedbackMessage('')    
     setFeedbackType('general')
     setFeedbackStatus('success')
     } catch (_error) {
-      setFeedbackStatus('error')
+      setFeedbackStatus('submit-error')
     }
- }, [feedbackType, feedbackMessage, feedbackContact])
+ }, [feedbackType, feedbackMessage])
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -413,7 +410,14 @@ function App() {
   return (
     <div className="app" onClick={() => inputRef.current?.focus()}>
       <div className="container">
-        <h1 className="title">PeaceKeys</h1>
+      <header className="top-header">
+        <div className="brand-block">
+          <h1 className="title">PeaceKeys</h1>
+          <p className="motto">Type Better, Be Better</p>
+        </div>
+      </header>
+
+        
 
         <input
           ref={inputRef}
@@ -530,20 +534,10 @@ function App() {
                 <textarea
                   value={feedbackMessage}
                   onChange={(e) => setFeedbackMessage(e.target.value)}
-                  placeholder="What stood out? What felt confusing? What should improve?"
+                  placeholder="What could improve? Suggest a quote to add. Help make your experience better!"
                   rows={3}
                 />
-              </label>
-
-              <label>
-                <span>Contact (Optional)</span>
-                <input
-                  type="text"
-                  value={feedbackContact}
-                  onChange={(e) => setFeedbackContact(e.target.value)}
-                  placeholder="Email or name"
-                />
-              </label>
+              </label>              
             
               <button type="submit">Send Feedback</button>
 
@@ -556,7 +550,11 @@ function App() {
               )}
 
               {feedbackStatus === 'error' && (
-                <p className="feedback-error">Please enter a message before submitting</p>
+                <p className="feedback-error">Please enter a message.</p>
+              )}
+
+              {feedbackStatus === 'submit-error' && (
+                <p className="feedback-error">Feedback was not sent. Please try again.</p>
               )}            
             </form>
           </section>

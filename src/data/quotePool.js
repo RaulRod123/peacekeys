@@ -211,7 +211,7 @@ const QUOTE_POOL = [
   },
   {
     text: 'And you are going to fail, and you are going to fail, and you are going to fail. And then, you are going to win.',
-    author:'Jocko Wilink',
+    author:'Jocko Willink',
     source:'Jocko Podcast',
   },
   {

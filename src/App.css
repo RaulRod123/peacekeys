@@ -293,7 +293,8 @@
 .feedback-copy {
   margin: 0 0 10px;
   font-style: normal;
-  color: #5f7c84;
+  font-weight: 500;
+  color: #6b7375;
 }
 
 .feedback-form label {

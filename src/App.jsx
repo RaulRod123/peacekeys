@@ -511,9 +511,9 @@ function App() {
             onClick={(e) => e.stopPropagation()}
           >
         
-            <h2>Feedback</h2>
+            <h2>Experess Yourself!</h2>
             <p className="feedback-copy">
-              Welcome to PeaceKeys Beta! Please help me improve your experience by sending some feedback. Keep on typing!
+              Be a contributor and help us grow. Share your thoughts or suggest a quote from someone who inspires you! 
             </p>
 
             <form className="feedback-form" onSubmit={handleFeedbackSubmit}>

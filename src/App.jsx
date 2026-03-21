@@ -511,7 +511,7 @@ function App() {
             onClick={(e) => e.stopPropagation()}
           >
         
-            <h2>Experess Yourself!</h2>
+            <h2>Express Yourself!</h2>
             <p className="feedback-copy">
               Be a contributor and help us grow. Share your thoughts or suggest a quote from someone who inspires you! 
             </p>

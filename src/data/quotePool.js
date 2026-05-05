@@ -244,6 +244,44 @@ const QUOTE_POOL = [
     author:'Steve Harvey',
     source:'Post-show',
   },
+
+  // The 48 Laws Of Power //
+  {
+    text: 'Do not people talk in society of a man being a great actor? They do not mean by that that he feels, but that he excels in simulating, though he feels nothing',
+    author: 'Denis Diderot',
+    source: '48 Laws of Power' 
+  },
+  {
+    text:'A man who knows the court is master of his gestures, of his eyes and of his face; he is profound, impenetrable; he dissimulates bad offices, smiles at his enemies, controls his irritation, disguises his passions, belies his heart, speaks and acts against his feelings.',
+    author:'Jean De La Bruyere',
+    source:'48 Laws of Power'
+  },
+  {
+    text:"The best strategy is always to be very strong; first in general, then at the decisive point... There is no higher and simpler law of strategy than that of keeping one's forces concentrated... In short the first principle is: act with the utmost concentration.",
+    author:'Carl von Clausewitz',
+    source:'48 Laws of Power'
+  },
+  {
+    text:'Weak people never give way when they ought to.',
+    author: 'Cardinal de Retz',
+    source: '48 Laws of Power'
+  },
+  {
+    text:'Regard it as more courageous not to become involved in an engagement than to win in battle, and where there is already one interfering fool, take care that there shall not be two.',
+    author:'Baltasar Gracian',
+    source:'48 Laws of Power'
+  },
+  {
+    text:'When you meet a swordsman, draw your sword: Do not recite poetry to one who is not a poet.',
+    author:"CH'an Buddhist Classic",
+    source:'48 Laws of Power'
+  },
+  {
+    text:'Solitude is dangerous to reason, without being favorable to virtue... Remember that solitary mortal is certainly luxurious, probably superstitious, and possibly mad.',
+    author:'Dr. Samuel Johnson',
+    source:'48 Laws of Power'
+  },
+
 ]
 
 
